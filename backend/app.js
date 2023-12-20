@@ -14,7 +14,7 @@ mongoose.connect(`mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWO
 const morgan = require("morgan")
 const fs = require("fs");
 const path = require("path");
-const rfs = require("file-stream-rotator");
+const rfs = require("rotating-file-stream");
 
 const logDirectory = path.join("./api/", "log");
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
