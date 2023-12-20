@@ -5,7 +5,7 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 mongoose.connect(`mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@cluster0.tsgn3ro.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`)
 .then(()=>{
-    console.log('App is conected to database')
+    console.log('App is connected to database')
 })
 .catch((error)=>{
     console.log(error)
@@ -37,7 +37,7 @@ const raportRoutes = require("./api/routes/raports")
 const userRoutes = require("./api/routes/users")
 const checkAuth = require("./api/middleware/checkAuth")
 
-// app.use("/raport", raportRoutes)
+app.use("/raport", raportRoutes)
 app.use("/users", userRoutes)
 
 
