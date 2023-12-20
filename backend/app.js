@@ -10,7 +10,7 @@ mongoose.connect(`mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWO
 .catch((error)=>{
     console.log(error)
 })
-//logowanie dodać dopisywanie do pliku
+
 const morgan = require("morgan")
 const fs = require("fs");
 const path = require("path");
@@ -35,9 +35,10 @@ app.use(bodyParser.json())
 
 const raportRoutes = require("./api/routes/raports")
 const userRoutes = require("./api/routes/users")
+const checkAuth = require("./api/middleware/checkAuth")
 
 // app.use("/raport", raportRoutes)
-// app.use("/users", userRoutes)
+app.use("/users", userRoutes)
 
 
 module.exports =app
