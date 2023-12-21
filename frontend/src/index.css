@@ -1,3 +1,7 @@
 @tailwind base;
+a.active{
+    border-color: white;
+}
+
 @tailwind components;
 @tailwind utilities;
