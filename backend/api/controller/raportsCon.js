@@ -6,6 +6,8 @@ exports.raport_dodaj_nowy = (req, res, next) => {
         pracownicy: req.body.pracownicy,
         data: req.body.data,
         materialy: req.body.materialy,
+        opis:req.body.opis,
+        czaspracy:req.body.czaspracy,
         zdjecia:{
             nazwa: req.body.nazwa,
             lokpliku: req.body.lokpliku,
@@ -52,6 +54,8 @@ exports.raport_change=(req, res, next) =>{
         pracownicy: req.body.pracownicy,
         data: req.body.data,
         materialy: req.body.materialy,
+        opis:req.body.opis,
+        czaspracy:req.body.czaspracy,
         zdjecia:{
             nazwa: req.body.nazwa,
             lokpliku: req.body.lokpliku,

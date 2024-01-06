@@ -10,6 +10,8 @@ const RapportEdit = () => {
   const [pracownicy, setPracownicy] = useState('');
   const [dataWykonaia, setDataWykonaia] = useState('');
   const [materialy, setMaterialy] = useState('');
+  const [czaspracy, setCzasPracy] = useState('');
+  const [opis, setOpis] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
@@ -19,11 +21,13 @@ const RapportEdit = () => {
     setLoading(true);
     axios.get(`http://localhost:3001/raport/${id}`)
       .then((response) => {
-        const { lokalizacja, pracownicy, materialy, data } = response.data.info;
+        const { lokalizacja, pracownicy, materialy, data, czaspracy, opis } = response.data.info;
         setLokalizacja(lokalizacja);
         setPracownicy(pracownicy);
         setMaterialy(materialy);
         setDataWykonaia(data);
+        setCzasPracy(czaspracy);
+        setOpis(opis);
         setLoading(false);
       })
       .catch((error) => {
@@ -38,6 +42,8 @@ const RapportEdit = () => {
       lokalizacja,
       pracownicy,
       materialy,
+      czaspracy,
+      opis,
       data: dataWykonaia,
     };
     setLoading(true);
@@ -86,6 +92,24 @@ const RapportEdit = () => {
             type='text'
             value={materialy}
             onChange={(e) => setMaterialy(e.target.value)}
+            className='border-2 border-red-500 px-4 py-2  w-full '
+          />
+        </div>
+        <div className='my-4'>
+          <label className='text-xl mr-4 text-gray-800'>Opis</label>
+          <input
+            type='text'
+            value={opis}
+            onChange={(e) => setOpis(e.target.value)}
+            className='border-2 border-red-500 px-4 py-2  w-full '
+          />
+        </div>
+        <div className='my-4'>
+          <label className='text-xl mr-4 text-gray-800'>Czas pracy na miejscu</label>
+          <input
+            type='text'
+            value={czaspracy}
+            onChange={(e) => setCzasPracy(e.target.value)}
             className='border-2 border-red-500 px-4 py-2  w-full '
           />
         </div>

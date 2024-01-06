@@ -39,7 +39,7 @@ const RapportList = () => {
       <div className='flex justify-between items-center'>
         <h1 className='text-3xl my-8'>Lista raportów</h1>
         <Link to='/rapport/create'>
-          <MdOutlineAddBox className='text-sky-800 text-4xl' />
+          <MdOutlineAddBox className=' text-green-800 text-4xl' />
         </Link>
       </div>
       {loading ? (
@@ -48,18 +48,18 @@ const RapportList = () => {
         <table className='w-full border-separate border-spacing-2'>
           <thead>
             <tr>
-              <th className='border border-slate-600 rounded-md'>Numer</th>
-              <th className='border border-slate-600 rounded-md'>Lokalizacja</th>
-              <th className='border border-slate-600 rounded-md max-md:hidden'>Data</th>
+              <th className='border border-red-500 rounded-md'>Numer</th>
+              <th className='border border-red-500 rounded-md'>Lokalizacja</th>
+              <th className='border border-red-500 rounded-md max-md:hidden'>Data</th>
             </tr>
           </thead>
           <tbody>
             {rapports.map((rapport, index) => (
               <tr key={rapport._id || index} className='h-8'>
-                <td className='border border-slate-700 rounded-md text-center'>{index + 1}</td>
-                <td className='border border-slate-700 rounded-md text-center'>{rapport.lokalizacja}</td>
-                <td className='border border-slate-700 rounded-md text-center max-md:hidden'>{rapport.data}</td>
-                <td className='border border-slate-700 rounded-md text-center'>
+                <td className='border border-red-500 rounded-md text-center'>{index + 1}</td>
+                <td className='border border-red-500 rounded-md text-center'>{rapport.lokalizacja}</td>
+                <td className='border border-red-500 rounded-md text-center max-md:hidden'>{rapport.data}</td>
+                <td className='border border-red-500 rounded-md text-center'>
                   <div className='flex justify-center gap-x-4'>
                     <Link to={`/rapport/detail/${rapport._id}`}>
                       <BsInfoCircle className='text-2xl text-green-800' />
