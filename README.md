@@ -32,7 +32,7 @@ List the ready features here:
 - Allows reporting
 - Allows editing of reports in CRUD cases
 - Allows displaying raports 
-- Allows sorting of work reports 
+
 
 
 ## Screenshots
@@ -73,5 +73,5 @@ Provide various use cases and code examples here.
 
 
 ## Project Status
-Project is: _in progress_.
+Project is: _in progress_. currently working on authentication
 
