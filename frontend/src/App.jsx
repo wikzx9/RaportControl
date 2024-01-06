@@ -13,7 +13,7 @@ import RootLayout from './layouts/RootLayout'
 import AddUser from './pages/AddUser'
 import DeleteUser from './pages/DeleteUser'
 import EditUser from './pages/EditUser'
-
+import RapportAdd from './pages/RapportAdd'
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,15 +21,15 @@ function App() {
         <Route index element={<Home/>}/>
 
         <Route path='login' element={<Login/>}/>
-
-        <Route path='rapport' element={<RapportList/>}>
-          <Route path='detail/:id' element={<RapportShow/>}/>
-          <Route path='edit/:id' element={<RapportEdit/>}/>
-          <Route path='delete/:id' element={<RapportDelete/>}/>
-        </Route>
+        <Route path='/rapport/edit/:id' element={<RapportEdit/>}/>
+        <Route path='/rapport' element={<RapportList/>}/>
+        <Route path='/rapport/detail/:id' element={<RapportShow/>}/>
+        <Route path='/rapport/delete/:id' element={<RapportDelete/>}/>
+        <Route path='/rapport/create' element={<RapportAdd/>} />
+        
         
 
-        <Route path='users' element={<UserControl/>}>
+        <Route path='/users' element={<UserControl/>}>
           <Route path='add' element={<AddUser/>}/>
           <Route path='delete/:id' element={<DeleteUser/>}/>
           <Route path='edit/:id' element={<EditUser/>}/>

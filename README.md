@@ -1,6 +1,6 @@
 # Raport Control
 > The application was created to facilitate the work of field service technicians in the IT sector. It is intended to speed up the reporting of work carried out at the customer's site. And to make it easier for the management to terminate work related to the service procedure.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
+> Live demo not yet available [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -14,11 +14,8 @@
 
 
 ## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
+>The project was done as a credit work in the next phases to be completed and presented as a thesis application. The app was originally intended to solve problems with work reporting which was cumbersome, so I came up with the idea for this app.
+
 
 
 ## Technologies Used
@@ -27,15 +24,15 @@
 - ExpressJS v4.18.2
 - TailwindCSS v3.4
 - Vite v5.0.8
-- Axios v1.6.2
 - MongoDB v6.3.0
 
 
 ## Features
 List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+- Allows reporting
+- Allows editing of reports in CRUD cases
+- Allows displaying raports 
+- Allows sorting of work reports 
 
 
 ## Screenshots
@@ -44,10 +41,29 @@ List the ready features here:
 
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
-
+Dependencies are listed in package.json respectively in backend and frontend.
+To install you need to:
+- Install all dependencies by going into backend and frontend folders and typing
+```
+npm i
+```
+- And create .env file in backend with structure like this 
+```
+PORT = ""
+DBUSERNAME = ""
+DBPASSWORD = ""
+DBNAME = ""
+JWTPRIVATEKEY = ""
+```
+- Edit connection link to MongoDB in app.js file line 6
+- Then you can run it by running two scripts one for backend server 
+```
+npm run dev
+```
+- Respectively in frontend run 
+```
+npm run dev
+``` 
 
 ## Usage
 How does one go about using it?
@@ -57,5 +73,5 @@ Provide various use cases and code examples here.
 
 
 ## Project Status
-Project is: _in progress_. Working on authorization.
+Project is: _in progress_.
 

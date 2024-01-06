@@ -1,9 +1,9 @@
 import React from 'react'
 
-const raportShow = () => {
+const RapportShow = () => {
   return (
-    <div>raportShow</div>
+    <div>RapportShow</div>
   )
 }
 
-export default raportShow
+export default RapportShow

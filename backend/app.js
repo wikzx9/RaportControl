@@ -1,4 +1,7 @@
 const express =require("express")
+
+const cors = require('cors');
+
 const app = express()
 require('dotenv').config()
 
@@ -23,6 +26,18 @@ const accessLogStream = rfs.createStream("access.log", {
     interval: "1d", 
     path: logDirectory,
   });
+
+  const allowedOrigins = ['http://localhost:5173'];
+  app.use(cors({
+    origin: function (origin, callback) {
+      
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  }));
 
   app.use(
     morgan("combined", {

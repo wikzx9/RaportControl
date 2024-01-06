@@ -25,7 +25,7 @@ exports.raport_dodaj_nowy = (req, res, next) => {
 exports.raport_get_all =(req, res, next) => {
     Raport.find()
     .then(result =>{
-        res.status(500).json({
+        res.status(200).json({
             wiadomosc:"Lista wszystkich raportów",
             info: result
         })
