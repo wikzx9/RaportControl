@@ -8,10 +8,8 @@ const RootLayout = () => {
     const {auth, setAuth } = useContext(AuthContext);
     const navigate = useNavigate();
     const logout = async () => {
-      axios.get(`http://localhost:3001/users/logout`,{
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      axios.put(`http://localhost:3001/users/logout/${auth.accessToken}`, {
+        refreshToken: ''
       })
       setAuth({});
       navigate('/login');
@@ -24,7 +22,6 @@ const RootLayout = () => {
        <NavLink to="/" className='text-decoration-none p-2 border-current border-2 rounded-xl bg-red-500 border-red-700 hover:bg-red-400'>Witaj</NavLink>
        <NavLink to="rapport" className='text-decoration-none p-2 border-current border-2 rounded-xl bg-red-500 border-red-700 hover:bg-red-400'>Raporty</NavLink>
        <NavLink to="users" className='text-decoration-none p-2 border-current border-2 rounded-xl bg-red-500 border-red-700 hover:bg-red-400'>Użytkownicy</NavLink>
-       
        {!auth.user ? (
        <NavLink to="login" className='text-decoration-none p-2 border-current border-2 rounded-xl bg-red-500 border-red-700 hover:bg-red-400'>Logowanie</NavLink>
        ) : (

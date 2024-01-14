@@ -23,7 +23,7 @@ const LogIn = () => {
     }, [])
 
     useEffect(() => {
-        setErrMsg('');
+    setErrMsg('');
     }, [user, pwd])
 
     const handleSubmit = async (e) => {

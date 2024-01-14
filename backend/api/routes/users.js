@@ -12,6 +12,6 @@ router.post('/register', registerControler.handleNewUser)
 
 router.delete('/usun/:id', usersController.deleteUser)
 
-router.get('/logout', logoutControler.handleLogout)
+router.put('/logout/:accToken', logoutControler.handleLogout)
 
 module.exports = router;

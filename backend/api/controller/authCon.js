@@ -7,7 +7,7 @@ const handleLogin = async (req, res) => {
     if (!user || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
     
     const foundUser = await User.findOne({ email: user }).exec();
-    console.log(foundUser);
+
     if (!foundUser) return res.sendStatus(401); 
 
 
@@ -33,8 +33,7 @@ const handleLogin = async (req, res) => {
         
         foundUser.refreshToken = refreshToken;
         const result = await foundUser.save();
-        console.log(result);
-        console.log(roles);
+
 
         
         res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
