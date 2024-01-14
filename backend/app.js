@@ -1,9 +1,27 @@
-const express =require("express")
-
+const express = require("express")
+const verifyJWT = require('./api/middleware/verifyJWT')
 const cors = require('cors');
+const raportRoutes = require("./api/routes/raports")
+const userRoutes = require("./api/routes/users")
+const authRoutes = require("./api/routes/auth")
+const cookieParser = require('cookie-parser');
+const corsOptions = require('./api/config/corsOptions');
+const cridentials = require('./api/middleware/credenctials');
+const morgan = require("morgan")
+const fs = require("fs");
+const path = require("path");
+const rfs = require("rotating-file-stream");
+const logDirectory = path.join("./api/", "log");
+
 
 const app = express()
+
 require('dotenv').config()
+
+app.use(cridentials);
+
+const bodyParser = require("body-parser")
+app.use(bodyParser.json())
 
 const mongoose = require('mongoose')
 mongoose.connect(`mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@cluster0.tsgn3ro.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`)
@@ -14,12 +32,6 @@ mongoose.connect(`mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWO
     console.log(error)
 })
 
-const morgan = require("morgan")
-const fs = require("fs");
-const path = require("path");
-const rfs = require("rotating-file-stream");
-
-const logDirectory = path.join("./api/", "log");
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 
 const accessLogStream = rfs.createStream("access.log", {
@@ -27,17 +39,15 @@ const accessLogStream = rfs.createStream("access.log", {
     path: logDirectory,
   });
 
-  const allowedOrigins = ['http://localhost:5173'];
-  app.use(cors({
-    origin: function (origin, callback) {
-      
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-  }));
+
+app.use(express.urlencoded({ extended: false }));
+
+app.use(express.json());
+
+app.use(cookieParser());
+
+
+app.use(cors(corsOptions));
 
   app.use(
     morgan("combined", {
@@ -45,15 +55,11 @@ const accessLogStream = rfs.createStream("access.log", {
     })
   );
 
-const bodyParser = require("body-parser")
-app.use(bodyParser.json())
 
-const raportRoutes = require("./api/routes/raports")
-const userRoutes = require("./api/routes/users")
-const checkAuth = require("./api/middleware/checkAuth")
 
 app.use("/raport", raportRoutes)
 app.use("/users", userRoutes)
+app.use("/auth", authRoutes)
 
 
 module.exports =app

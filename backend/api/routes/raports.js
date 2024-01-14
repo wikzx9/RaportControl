@@ -1,10 +1,10 @@
 const express = require("express")
-const raport = require("../models/raportModel")
 const router = express.Router();
-const checkAuth = require("../middleware/checkAuth")
 const raportControler = require("../controller/raportsCon")
+const verifyRoles = require('../middleware/verifyRoles')
+const ROLES_LIST = require('../config/rolesList')
 
-router.post("/dodaj",   raportControler.raport_dodaj_nowy)
+router.post("/dodaj",raportControler.raport_dodaj_nowy)
 
 router.get("/lista",raportControler.raport_get_all)
 

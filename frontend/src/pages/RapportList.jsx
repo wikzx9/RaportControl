@@ -21,6 +21,7 @@ const RapportList = () => {
       })
       .then((response) => {
         setRapports(response.data.info);
+        console.log('Error w get then:',response.data.info)
         setLoading(false);
       })
       .catch((error) => {

@@ -12,28 +12,40 @@ import UserControl from './pages/UserControl'
 import RootLayout from './layouts/RootLayout'
 import AddUser from './pages/AddUser'
 import DeleteUser from './pages/DeleteUser'
-import EditUser from './pages/EditUser'
 import RapportAdd from './pages/RapportAdd'
+import Unauthorized from './pages/Unauthorized'
+import RequireAuth from './pages/RequireAuth'
+const ROLES = {
+  'User': 2001,
+  'Admin': 5150
+}
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' element={<RootLayout/>}>
         <Route index element={<Home/>}/>
 
-        <Route path='login' element={<Login/>}/>
-        <Route path='/rapport/edit/:id' element={<RapportEdit/>}/>
-        <Route path='/rapport' element={<RapportList/>}/>
-        <Route path='/rapport/detail/:id' element={<RapportShow/>}/>
-        <Route path='/rapport/delete/:id' element={<RapportDelete/>}/>
-        <Route path='/rapport/create' element={<RapportAdd/>} />
+        <Route path='/login' element={<Login/>}/>
+
+        <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+          <Route path='/rapport/edit/:id' element={<RapportEdit/>}/>
+          <Route path='/rapport' element={<RapportList/>}/>
+          <Route path='/rapport/detail/:id' element={<RapportShow/>}/>
+          <Route path='/rapport/delete/:id' element={<RapportDelete/>}/>
+          <Route path='/rapport/create' element={<RapportAdd/>} />
+        </Route>
         
+        <Route path="/unauthorized" element={<Unauthorized />} />
+
+        
+        <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+          <Route path='/users' element={<UserControl/>}/>
+          <Route path='/users/add' element={<AddUser/>}/>
+          <Route path='/users/delete/:id' element={<DeleteUser/>}/>
+          </Route>
         
 
-        <Route path='/users' element={<UserControl/>}>
-          <Route path='add' element={<AddUser/>}/>
-          <Route path='delete/:id' element={<DeleteUser/>}/>
-          <Route path='edit/:id' element={<EditUser/>}/>
-        </Route>
       </Route>
     ))
   return (

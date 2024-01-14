@@ -15,5 +15,5 @@ const raportSchema = mongoose.Schema({
 {
     timestamps: true,
 })
-//dodać opis i czas pracy
+
 module.exports = mongoose.model("Raport", raportSchema)

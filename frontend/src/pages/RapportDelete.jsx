@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
-import BackButton from '../components/BackButton';
 import axios from 'axios';
-import {  useParams,Link } from 'react-router-dom';
+import {  useParams,Link,useNavigate } from 'react-router-dom';
 
 const raportDelete = () => {
     const [loading, setLoading] = useState(false)
-    const navigate = useState();
+    const from = location.state?.from?.pathname || "/";
     const {id}= useParams()
+    const navigate = useNavigate();
 
     const handleDeleteRapport = () =>{
     setLoading(true);
     axios.delete(`http://localhost:3001/raport/usun/${id}`)
     .then(()=>{
       setLoading(false)
-      navigate('/rapport')
     })
     .catch((error) =>{
       setLoading(false)
     })
+    navigate('/rapport');
   }
   return (
     <div className='p-4'>
