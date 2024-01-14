@@ -32,7 +32,7 @@ List the ready features here:
 - Allows reporting
 - Allows editing of reports in CRUD cases
 - Allows displaying raports 
-- Allows sorting of work reports 
+
 
 
 ## Screenshots
@@ -64,14 +64,6 @@ npm run dev
 ```
 npm run dev
 ``` 
-
-## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
-
-
 ## Project Status
-Project is: _in progress_.
+Project is: _in progress_. currently working on authentication
 
