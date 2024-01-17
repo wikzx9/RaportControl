@@ -4,12 +4,25 @@ import Spinner from '../components/Spinner';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const RapportList = () => {
   const [rapports, setRapports] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [searchInput, setSearchInput] = useState('');
+  const [searchInputDuo, setSearchInputDuo] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearchByName = () => {
+
+    navigate(`/rapport/lista/${searchInput}`);
+  };
+
+  const handleSearchByDate = () => {
+
+    navigate(`/rapport/lista/data/${searchInputDuo}`);
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -21,7 +34,6 @@ const RapportList = () => {
       })
       .then((response) => {
         setRapports(response.data.info);
-        console.log('Error w get then:',response.data.info)
         setLoading(false);
       })
       .catch((error) => {
@@ -39,6 +51,31 @@ const RapportList = () => {
     <div className='p-4'>
       <div className='flex justify-between items-center'>
         <h1 className='text-3xl my-8'>Lista raportów</h1>
+        <form>
+      <label className='text-xl'>Wpisz nazwę lokalizacji lub wybierz datę:</label>
+      <input
+        className='border m-2 border-red-500 rounded-md'
+        type='text'
+        name='nazwa'
+        required
+        value={searchInput}
+        onChange={(e) => setSearchInput(e.target.value)}
+      />
+      <button className='border m-2 p-2 border-red-500 rounded-md' onClick={handleSearchByName} disabled={searchInput.length === 0}>
+        Szukaj po nazwie
+      </button>
+      <input
+        className='border m-2 border-red-500 rounded-md'
+        type='date'
+        name='nazwa'
+        required
+        value={searchInputDuo}
+        onChange={(e) => setSearchInputDuo(e.target.value)}
+      />
+      <button className='border m-2 p-2 border-red-500 rounded-md' onClick={handleSearchByDate} disabled={searchInputDuo.length === 0}>
+        Szukaj po dacie
+      </button>
+    </form>
         <Link to='/rapport/create'>
           <MdOutlineAddBox className=' text-green-800 text-4xl' />
         </Link>

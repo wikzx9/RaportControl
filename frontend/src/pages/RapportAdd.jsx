@@ -64,7 +64,7 @@ const RapportAdd = () => {
         <div className='my-4'>
           <label className='text-xl mr-4 text-gray-800'>Data pracy</label>
           <input
-          type='text'
+          type='date'
           value={dataWykonaia}
           onChange={(e) => setDataWykonaia(e.target.value)}
           className='border-2 border-red-500 px-4 py-2 w-full'

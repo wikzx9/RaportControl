@@ -8,6 +8,10 @@ router.post("/dodaj",raportControler.raport_dodaj_nowy)
 
 router.get("/lista",raportControler.raport_get_all)
 
+router.get("/lista/:name",raportControler.raport_get_by_name)
+
+router.get("/lista/podacie/:data",raportControler.raport_get_by_data)
+
 router.get("/:id",raportControler.raport_get_by_id)
 
 router.put("/aktualizuj/:id", raportControler.raport_change)

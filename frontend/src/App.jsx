@@ -15,6 +15,8 @@ import DeleteUser from './pages/DeleteUser'
 import RapportAdd from './pages/RapportAdd'
 import Unauthorized from './pages/Unauthorized'
 import RequireAuth from './pages/RequireAuth'
+import RapportListByDate from './pages/RapportListByDate'
+import RapportListByName from './pages/RapportListByName'
 const ROLES = {
   'User': 2001,
   'Admin': 5150
@@ -34,6 +36,8 @@ function App() {
           <Route path='/rapport/detail/:id' element={<RapportShow/>}/>
           <Route path='/rapport/delete/:id' element={<RapportDelete/>}/>
           <Route path='/rapport/create' element={<RapportAdd/>} />
+          <Route path='/rapport/lista/data/:data' element={<RapportListByDate/>} />
+          <Route path='/rapport/lista/:nazwa' element={<RapportListByName/>} />
         </Route>
         
         <Route path="/unauthorized" element={<Unauthorized />} />

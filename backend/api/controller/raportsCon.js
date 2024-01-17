@@ -35,6 +35,30 @@ exports.raport_get_all =(req, res, next) => {
     .catch(err=> res.status(500).json(err))
 }
 
+exports.raport_get_by_name =(req, res, next) => {
+    const  name = req.params.name
+    Raport.find({lokalizacja : name})
+    .then(result =>{
+        res.status(200).json({
+            wiadomosc:`Lista wszystkich raportów po nazwie: ${name}`,
+            info: result
+        })
+    })
+    .catch(err=> res.status(500).json(err))
+}
+
+exports.raport_get_by_data =(req, res, next) => {
+    const  dataa = req.params.data
+    Raport.find({data : dataa})
+    .then(result =>{
+        res.status(200).json({
+            wiadomosc:`Lista wszystkich raportów po dacie: ${dataa}`,
+            info: result
+        })
+    })
+    .catch(err=> res.status(500).json(err))
+}
+
 exports.raport_get_by_id =(req, res, next) =>{
     const id = req.params.id
     Raport.findById(id)

@@ -20,12 +20,12 @@ const RootLayout = () => {
        <h1 className='w-auto'>Rapport Control App</h1>
        <nav className='flex gap-2 justify-end'>
        <NavLink to="/" className='text-decoration-none p-2 border-current border-2 rounded-xl bg-red-500 border-red-700 hover:bg-red-400'>Witaj</NavLink>
-       <NavLink to="rapport" className='text-decoration-none p-2 border-current border-2 rounded-xl bg-red-500 border-red-700 hover:bg-red-400'>Raporty</NavLink>
-       <NavLink to="users" className='text-decoration-none p-2 border-current border-2 rounded-xl bg-red-500 border-red-700 hover:bg-red-400'>Użytkownicy</NavLink>
        {!auth.user ? (
        <NavLink to="login" className='text-decoration-none p-2 border-current border-2 rounded-xl bg-red-500 border-red-700 hover:bg-red-400'>Logowanie</NavLink>
        ) : (
        <div>
+        <NavLink to="rapport" className='text-decoration-none p-2 border-current border-2 rounded-xl bg-red-500 border-red-700 hover:bg-red-400'>Raporty</NavLink>
+        <NavLink to="users" className='text-decoration-none p-2 border-current border-2 rounded-xl bg-red-500 border-red-700 hover:bg-red-400'>Użytkownicy</NavLink>
         <button onClick={logout} className='text-decoration-none p-2 border-current border-2 rounded-xl bg-red-500 border-red-700 hover:bg-red-400'>Wyloguj</button>
        </div>
         )}
